@@ -1,0 +1,6 @@
+# Ignore object files
+src/*.o
+src/*.obj
+
+# Ignore build
+build/
