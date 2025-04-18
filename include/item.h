@@ -50,4 +50,15 @@ typedef struct Item Item;
  */
 const struct Item* createItem(ItemType type, int8_t damage, uint8_t turnsWaiting);
 
+/**
+ *  Uses a specific item from the player's inventory.
+ *
+ *  This function performs the item's action (e.g., dealing damage, applying effects)
+ *  and may modify the player's state accordingly. The behavior depends on the item's type.
+ *
+ *  @param player Pointer to the Player who is using the item.
+ *  @param item Pointer to the Item to be used.
+ */
+void useItem(struct Player* player, Item* item);
+
 #endif
