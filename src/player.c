@@ -1,3 +1,4 @@
+#include "../include/item.h"
 #include "../include/player.h"
 
 /**
@@ -7,8 +8,8 @@
  *  @param name The name of the player (must be NAME_SIZE or smaller).
  *  @return A pointer to the newly created Player, or NULL on failure.
  */
-Player* createPlayer(char name[NAME_SIZE]) {
-    Player* player = malloc(sizeof(Player));
+struct Player* createPlayer(char name[NAME_SIZE]) {
+    struct Player* player = malloc(sizeof(struct Player));
     if (player == NULL) {
         fprintf(stderr, "ERROR: Failed to allocate memory for player.\n");
         return NULL;
@@ -34,10 +35,10 @@ Player* createPlayer(char name[NAME_SIZE]) {
  *  @param player Pointer to the Player whose inventory will be updated.
  *  @param item Pointer to the Item to be added (copied into the inventory).
  */
-void addPlayerItem(Player* player, Item* item) {
+void addPlayerItem(struct Player* player, struct Item* item) {
     // New level
     if (player->items == NULL) {
-        player->items = malloc(player->maxItems * sizeof(Item));
+        player->items = malloc(player->maxItems * sizeof(struct Item));
         if (player->items == NULL) {
             fprintf(stderr, "ERROR: Failed to allocate memory for player items.\n");
             return;
@@ -63,7 +64,7 @@ void addPlayerItem(Player* player, Item* item) {
  *  @param player Pointer to the Player who is using the item.
  *  @param item Pointer to the Item to be used.
  */
-void usePlayerItem(Player* player, Item* item) {
+void usePlayerItem(struct Player* player, struct Item* item) {
     switch (item->type) {
         case CIGARETTES:
             break;
@@ -85,7 +86,7 @@ void usePlayerItem(Player* player, Item* item) {
  *
  *  @param player Pointer to the Player whose inventory will be cleared.
  */
-void cleanPlayerItems(Player* player) {
+void cleanPlayerItems(struct Player* player) {
     free(player->items);
     player->items = NULL;
     player->itemCount = 0;

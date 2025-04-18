@@ -17,17 +17,26 @@ typedef enum {
     HANDCUFFS      /**< A pair of handcuffs */
 } ItemType;
 
+/**
+ *  Represents a player in the game.
+ *
+ *  This structure stores basic information about a player, including their name,
+ *  current health, the number of turns they must wait before acting, and their inventory.
+ */
+struct Player;  // Forward declaration
+
 /** 
  *  Struct representing an item in the game.
  *
  *  This struct contains the properties of a game item, including its type,
  *  damage, and the number of turns it takes before it can be used again.
  */
-typedef struct {
+struct Item {
     ItemType  type;           /**< Type of the item */
     int8_t    damage;         /**< Amount of damage the item inflicts, if applicable */
     uint8_t   turnsWaiting;   /**< The number of turns it makes the user wait */
-} Item;
+};
+typedef struct Item Item;
 
 /**
  *  Creates a new item with the given properties.
@@ -39,6 +48,6 @@ typedef struct {
  *  @param turnsWaiting The number of turns required before the item can be used again.
  *  @return A pointer to the newly created Item, or NULL if allocation fails.
  */
-const Item* createItem(ItemType type, int8_t damage, uint8_t turnsWaiting);
+const struct Item* createItem(ItemType type, int8_t damage, uint8_t turnsWaiting);
 
 #endif

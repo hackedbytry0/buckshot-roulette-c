@@ -10,8 +10,8 @@
  *  @param turnsWaiting The number of turns required before the item can be used again.
  *  @return A pointer to the newly created Item, or NULL if allocation fails.
  */
-const Item* createItem(ItemType type, int8_t damage, uint8_t turnsWaiting) {
-    Item* item = malloc(sizeof(Item));
+const struct Item* createItem(ItemType type, int8_t damage, uint8_t turnsWaiting) {
+    struct Item* item = malloc(sizeof(struct Item));
     if (item == NULL) {
         fprintf(stderr, "ERROR: Failed to allocate memory for item.\n");
         return NULL;
